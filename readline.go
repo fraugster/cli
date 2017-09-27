@@ -14,7 +14,7 @@ var stdin io.Reader = os.Stdin
 
 // ReadLine reads a single line from stdin and returns it without the trailing
 // newline. This function blocks until the first newline is read or the context
-// is canceled.
+// is canceled. In the later case the empty string is returned.
 func ReadLine(ctx context.Context) string {
 	r := bufio.NewReader(stdin)
 
@@ -36,7 +36,7 @@ func ReadLine(ctx context.Context) string {
 }
 
 // ReadLines reads lines from stdin and returns them in a channel.
-// All strings in the returned channel will end with "\n".
+// All strings in the returned channel will not include the trailing newline.
 // The channel is closed automatically if there are no more lines or if the
 // context is closed.
 //
@@ -56,7 +56,7 @@ func ReadLines(ctx context.Context) <-chan string {
 				panic(err)
 			}
 
-			c <- line
+			c <- line[:len(line)-1]
 		}
 	}()
 

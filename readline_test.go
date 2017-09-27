@@ -75,7 +75,10 @@ func TestReadLines(t *testing.T) {
 			stdin = strings.NewReader(strings.Join(input, ""))
 			linesChan := ReadLines(ctx)
 			lines := extract(linesChan)
-			assert.Equal(t, input, lines)
+			for i, expected := range input {
+				expected = expected[:len(expected)-1] // expect string without trailing newline
+				assert.Equal(t, expected, lines[i])
+			}
 		})
 	}
 }

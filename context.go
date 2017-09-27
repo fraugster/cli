@@ -7,9 +7,9 @@ import (
 	"syscall"
 )
 
-// sig is a side channel that may receive signals when ReadLineOrCtrl is used
-// which hijacks the tty so we can no longer receive control sequences like
-// ctrl+c.
+// sig is a side channel that may receive signals when ReceiveSignal. Any
+// context that was created via cli.Context will wait for signals on this
+// channel.
 var sig = make(chan os.Signal)
 
 // Context returns a context that is cancelled automatically when a SIGINT,
