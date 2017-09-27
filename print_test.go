@@ -3,9 +3,8 @@ package cli
 import (
 	"bytes"
 	"encoding/json"
-	"testing"
-
 	"strings"
+	"testing"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

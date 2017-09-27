@@ -1,2 +1,2 @@
-// Package cli implements helper functions for running command line applications.
+// Package cli implements utility functions for running command line applications.
 package cli

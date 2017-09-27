@@ -23,6 +23,7 @@ func ReadLine(ctx context.Context) string {
 		line, err := r.ReadString('\n')
 		if err != nil || len(line) == 0 {
 			input <- ""
+			return
 		}
 		input <- line[:len(line)-1]
 	}()
