@@ -1,7 +1,7 @@
 [![Build Status](https://secure.travis-ci.org/fraugster/cli.png?branch=master)](http://travis-ci.org/fraugster/cli)
 [![Coverage Status](https://coveralls.io/repos/fraugster/cli/badge.svg?branch=master)](https://coveralls.io/r/fraugster/cli?branch=master)
 [![GoDoc](https://godoc.org/github.com/fraugster/cli?status.svg)](https://godoc.org/github.com/fraugster/cli)
-[![license](https://img.shields.io/badge/license-MIT-4183c4.svg)](https://github.com/fraugster/cli/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/fraugster/cli.svg)](https://github.com/fraugster/cli/blob/master/LICENSE)
 
 ## github.com/fraugster/cli
 
@@ -81,10 +81,10 @@ func main() {
 
 ### License
 
-This package is licensed under the the MIT license. Please see the LICENSE file
-for details.
+This package is licensed under the the BSD 3-Clause License.
+Please see the [LICENSE](LICENSE) file for details.
 
 ## Contributing
 
-Any contributions are always welcome (use pull requests). For each pull request
-make sure that you covered your changes and additions with unit tests.
+Contributions are welcome but must be discussed first in a new github issue before
+Pull Requests will be accepted.
