@@ -16,7 +16,7 @@ The following simple features are currently implemented:
 
 CLI applications of perform similar tasks such as handling stop signals, reading
 from stdin and printing results to stdout. This package provides these functions
-in a single and coherent repository. Applications built with `github.comfraugster/cli`
+in a single and coherent repository. Applications built with `github.com/fraugster/cli`
 treat `context.Context` as first class citizen to remain responsive and implement
 graceful shutdown. Naturally this is visible when consuming (multi-line) input
 from stdin.  The `cli.Print` function is especially useful since it encourages
