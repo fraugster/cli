@@ -65,7 +65,7 @@ func main() {
 		inputs = append(inputs, line)
 		fmt.Println("OK, go on")
 	}
-    fmt.Println("Time is up")
+	fmt.Println("Time is up")
     
 	// Print something to stdout in a format specified by the user.
 	fmt.Println("Your inputs were:")
