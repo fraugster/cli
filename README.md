@@ -1,7 +1,6 @@
 ## github.com/fraugster/cli
 
 [![Build Status](https://secure.travis-ci.org/fraugster/cli.png?branch=master)](http://travis-ci.org/fraugster/cli)
-[![Coverage Status](https://coveralls.io/repos/fraugster/cli/badge.svg?branch=master)](https://coveralls.io/r/fraugster/cli?branch=master)
 [![GoDoc](https://godoc.org/github.com/fraugster/cli?status.svg)](https://godoc.org/github.com/fraugster/cli)
 [![License](https://img.shields.io/github/license/fraugster/cli.svg)](https://github.com/fraugster/cli/blob/master/LICENSE)
 
