@@ -6,10 +6,23 @@ import (
 	"io"
 	"os"
 	"reflect"
+	"bytes"
+	"sort"
 	"strings"
 	"text/tabwriter"
 
 	"gopkg.in/yaml.v2"
+)
+
+var (
+	// JSONHTMLEscape controls the SetEscapeHTML option in the "json" output
+	// format. If this is true then problematic HTML characters will be escaped
+	// inside JSON quoted strings.
+	//
+	// By default this is disabled to not interfere with readability of the
+	// output. If you are rendering output in an HTML context you should enable
+	// this feature.
+	JSONHTMLEscape = false
 )
 
 // Print encodes the value using the given encoding and then prints it to the
@@ -71,6 +84,7 @@ func printRaw(i interface{}, w io.Writer) error {
 func printJSON(i interface{}, w io.Writer) error {
 	enc := json.NewEncoder(w)
 	enc.SetIndent("", "    ")
+	enc.SetEscapeHTML(JSONHTMLEscape)
 	return enc.Encode(i)
 }
 
@@ -138,7 +152,13 @@ func printTable(v interface{}, w io.Writer) error {
 		for i := 0; i < val.Len(); i++ {
 			rr := map[string]string{}
 			for _, f := range fields {
-				rr[f.Name] = fmt.Sprint(val.Index(i).Field(f.Index).Interface())
+				elem := val.Index(i).Field(f.Index).Interface()
+				switch x := elem.(type) {
+				case map[string]string:
+					rr[f.Name] = stringMap(x)
+				default:
+					rr[f.Name] = fmt.Sprint(elem)
+				}
 			}
 			records = append(records, rr)
 		}
@@ -168,4 +188,22 @@ func printTable(v interface{}, w io.Writer) error {
 	}
 
 	return tw.Flush()
+}
+
+func stringMap(m map[string]string) string {
+	buf := new(bytes.Buffer)
+	keys := make([]string, 0, len(m))
+	for k := range m {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+
+	for i, k := range keys{
+		if i != 0 {
+			buf.WriteString(" ")
+		}
+		fmt.Fprintf(buf, "%s:%s", k, m[k])
+	}
+
+	return buf.String()
 }
